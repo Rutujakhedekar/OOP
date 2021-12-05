@@ -1,0 +1,152 @@
+ Create employee bio-data using following classes
+ i) Personal record
+ ii)Professional record
+ iii) Academic record 
+Assume appropriate data members and member function to accept required data & print bio-data. 
+Create bio-data using multiple inheritance using C++.*/
+
+
+#include<iostream>
+using namespace std;
+class Personal
+{
+public:
+	char name[10];
+	char DOB[10];
+	char BG[10];
+	int contact;
+	char address[30];
+	int policyno;
+	void acceptinfoPe();
+	void displayinfoPe();
+};
+    void Personal::acceptinfoPe()
+	{
+		cout<<"\nEnter name:- ";
+		cin>>name;
+		cout<<"\nEnter DOB:- ";
+		cin>>DOB;
+		cout<<"\nEnter BG:- ";
+		cin>>BG;
+		cout<<"\nEnter contact";
+		cin>>contact;
+		cout<<"\nEnter address";
+		cin>>address;
+		cout<<"\nEnter policyno";
+		cin>>policyno;
+	}
+    void Personal::displayinfoPe()
+	{
+		cout<<"\nname:-"<<name;
+		cout<<"\nDOB:-"<<DOB;
+		cout<<"\nBG:-"<<BG;
+		cout<<"\ncontact:-"<<contact;
+		cout<<"\naddress:-"<<address;
+		cout<<"\npolicyno"<<policyno;
+	}
+	class Academic
+	{
+	public:
+		char collagename[30];
+		float marks;
+		int YOP;
+		char qualification[10];
+		void  acceptinfoA()
+    {
+    	cout<<"\nEnter collage name";
+    	cin>>collagename;
+    	cout<<"\nEnter marks";
+    	cin>>marks;
+    	cout<<"\nEnter YOP";
+    	cin>>YOP;
+    	cout<<"\nEnter qualification";
+    	cin>>qualification;
+    }
+       void displayinfoA()
+    {
+    	cout<<"\ncollagename:-"<<collagename;
+    	cout<<"\nmarks:-"<<marks;
+    	cout<<"\nYOP:-"<<YOP;
+    	cout<<"\nqualification:-"<<qualification;
+    }
+	};
+  class Professional:public Academic,public Personal
+    {
+    public:
+    	int YOE;
+    	int empid;
+    	char NOC;
+        void acceptinfoPr()
+        {
+        	cout<<"\nEnter YOE";
+        	cin>>YOE;
+        	cout<<"\nEnter empid";
+        	cin>>empid;
+        	cout<<"\nEnter NOC";
+        	cin>>NOC;
+        }
+        void displayALL()
+        {
+        displayinfoPe();
+        displayinfoA();
+        cout<<"\nEnter YOE";
+        cin>>YOE;
+        cout<<"\nEnter empid";
+        cin>>empid;
+        cout<<"\nEnter NOC";
+        cin>>NOC;
+        }
+    };
+int main()
+{
+	  Professional Pr;
+	  Pr.acceptinfoPe();
+	  Pr.acceptinfoA();
+	  Pr.acceptinfoPr();
+	  Pr.displayALL();
+	  return 0;
+}
+
+/*
+output:-
+
+Enter name:-himansshu
+
+Enter DOB:- 97
+]
+Enter BG:- opos
+
+Enter contact552
+
+Enter address5
+
+Enter policyno2254
+
+Enter collage name24
+
+Enter marks24
+
+Enter YOP24
+
+Enter qualification2
+
+Enter YOE4
+
+Enter empid54
+
+Enter NOC54
+
+name:-himansshu
+DOB:-97
+BG:-]opos
+contact:-552
+address:-5
+policyno2254
+collagename:-24
+marks:-24
+YOP:-24
+qualification:-2
+Enter YOE
+Enter empid
+OUTPUT:-
+*/
