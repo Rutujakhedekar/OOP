@@ -1,0 +1,169 @@
+Assignment No:- A_1 (Complex No)
+
+Implement a class Complex which represents the Complex Number data type. 
+Implement the following operations: 
+1. Constructor (including a default constructor which creates the complex number 0+0i). 
+2. Overloaded operator+ to add two complex numbers. 
+3. Overloaded operator* to multiply two complex numbers. 
+4. Overloaded << and >> to print and read Complex Numbers.
+
+*/
+
+
+
+#include<iostream>
+using namespace std;
+
+class ComplexOp {
+
+private:
+	float img, real;
+
+public:
+	ComplexOp() {
+		img = 0;
+		real = 0;
+	}
+	 friend ostream & operator << (ostream &out,  ComplexOp &c);
+	 friend istream & operator >> (istream &in,  ComplexOp &c);
+	ComplexOp operator +(ComplexOp c2) {
+		ComplexOp temp;
+
+		temp.real = real + c2.real;
+		temp.img = img + c2.img;
+
+		return temp;
+	}
+	ComplexOp operator -(ComplexOp c2) {
+		ComplexOp temp;
+
+		temp.real = real - c2.real;
+		temp.img = img - c2.img;
+
+		return temp;
+	}
+	ComplexOp operator *(ComplexOp c2) {
+		ComplexOp temp;
+		temp.real=real*c2.real-(img*c2.img);
+		temp.img=real*c2.img+(img*c2.real);
+		return temp;
+	}
+};
+istream & operator >> (istream &in,  ComplexOp &c)
+{
+    cout << "Enter Real Part ";
+    in >> c.real;
+    cout << "Enter Imaginary Part ";
+    in >> c.img;
+    return in;
+}
+ostream & operator << (ostream &out,  ComplexOp &c)
+{
+
+    out <<c.real<< "+"<<c.img<< "i" << endl;
+    return out;
+}
+int main() {
+
+	int ch;
+	ComplexOp c1, c2, c3;
+	cout<<"\tWelcome";
+	do {
+		cout << "1.Enter complex numbers.\n";
+		cout << "2.Addition.\n";
+		cout << "3.Subtraction.\n";
+		cout << "4.Multiplication\n";
+		cout << "5.Exit.\n";
+		cout << "Enter your choice:\n";
+		cin >> ch;
+		switch (ch) {
+		case 1:
+			cin >> c1;
+			cin >> c2;
+			cout<<"\n Complex numbers are: "<<c1<<","<<c2;
+			break;
+
+		case 2:
+			c3 = c1 + c2;
+			cout<<"Complex numbers are: "<<c1<<","<<c2;
+			cout << "\n Addition:\n";
+			cout<<c3;
+			break;
+
+		case 3:
+			c3 = c1 - c2;
+			cout<<"Complex numbers are: "<<c1<<","<<c2;
+			cout << "\n Subtraction:\n";
+			cout<<c3;
+			break;
+
+		case 4:
+			c3 = c1 * c2;
+			cout<<"Complex numbers are: "<<c1<<","<<c2;
+			cout << "\n Multiplication:\n";
+			cout<<c3;
+			break;
+		}
+	} while (ch <5);
+	return 0;
+}
+/*
+OUTPUT:- 
+1.Enter complex numbers.
+2.Addition.
+3.Subtraction.
+4.Multiplication
+5.Exit.
+Enter your choice:
+1
+Enter Real Part 8
+Enter Imaginary Part 4
+Enter Real Part 2
+Enter Imaginary Part 3
+
+ Complex numbers are: 8+4i
+,2+3i
+1.Enter complex numbers.
+2.Addition.
+3.Subtraction.
+4.Multiplication
+5.Exit.
+Enter your choice:
+2
+Complex numbers are: 8+4i
+,2+3i
+
+ Addition:
+10+7i
+1.Enter complex numbers.
+2.Addition.
+3.Subtraction.
+4.Multiplication
+5.Exit.
+Enter your choice:
+3
+Complex numbers are: 8+4i
+,2+3i
+
+ Subtraction:
+6+1i
+1.Enter complex numbers.
+2.Addition.
+3.Subtraction.
+4.Multiplication
+5.Exit.
+Enter your choice:
+4
+Complex numbers are: 8+4i
+,2+3i
+
+ Multiplication:
+4+32i
+1.Enter complex numbers.
+2.Addition.
+3.Subtraction.
+4.Multiplication
+5.Exit.
+Enter your choice:
+5
+*/
